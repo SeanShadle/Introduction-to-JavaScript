@@ -1,24 +1,34 @@
 /************************************************************** Task 1: Warm-up! **************************************************************/
 //Task a: declare a variable called votingAge, console log true if age > 18 (no function required)
+let votingAge = 19;
 
-
-
+if(votingAge > 18){
+    console.log(true);
+}
 
 
 //Task b: declare a variable and then use a conditional to change the value of that variable based on the value assigned to a second variable (no function required)
+let test = 54;
 
-
+if(test > 50){
+    let test = 60;
+}
 
 
 
 //Task c: Convert string ("1999") to integer (1999)  (no function required) // hint look up the Number method
 
+Number('1999');
 
 
 
 
 //Task d: Write a function to multiply a*b 
+function multiply(a, b){
+    return a * b;
+}
 
+multiply(2,3);
 
 
 
@@ -27,8 +37,14 @@
 //Age in Dog years
 //write a function that takes your age and returns it to you in dog years - they say that 1 human year is equal to seven dog years 
 
+let myAge = 24;
 
+function dogYears(myAge){
+    let dogAge = myAge * 7;
+    console.log(dogAge);
+}
 
+dogYears(myAge);
 
 
 /************************************************************** Task 3 **************************************************************/
@@ -49,31 +65,82 @@
 
 // when you are finished invoke your function with the weight of 15 lbs and the age of 1 year - if your calculations are correct your result should be 0.44999999999999996
   
+function dogFeeder(weight, age){
+    if(age >= 1){
+        if(weight <= 5){
+            return weight * 0.05;
+        }else if(weight <= 10){
+            return weight * 0.04;
+        }else if (weight <= 15){
+            return weight * 0.03;
+        }else{
+            return weight * 0.02;
+        }        
+}else{
+    if(age <= 1){
+        if(age <= 0.33){
+            return weight * 0.10;
+        }else if(age <= 0.583){
+            return weight * 0.05;
+        }else{
+            return weight * .04;
+            }
+        }
+    }
+}
 
+console.log(dogFeeder(15, 1));
 
 
 
 /************************************************************** Task 4 **************************************************************/
-// Rock, Paper, Sissors
-// Your function should take a string (either rock paper or sissors)
+// Rock, Paper, Scissors
+// Your function should take a string (either rock paper or scissors)
 // it should return you won or you lost based on the rules of the game (you may need to look up the rules if you have not played before)
 // use math.random to determine the computers choice 
-// hint while you can complete this with only conditionals based on strings it may help to equate choice to a number 
+// hint while you can complete this with only conditionals based on strings it may help to equate choice to a number. 1 beats 3, 2 beats 1, 3 beats 2
+let userChoice = "paper";
 
-  
-  
+function playGame(userChoice){
+    let computerChoice = Math.floor(Math.random() * 3 + 1);
+    if(userChoice === "rock"){
+        userChoice = 1;
+    } else if(userChoice === "paper"){
+        userChoice = 2;
+    } else {
+        userChoice = 3;
+    }
+    if((computerChoice === 1 && userChoice === 3) || (computerChoice === 2 && userChoice === 1) || (computerChoice === 3 && userChoice === 2)){
+        return 'You lost!';
+    } else if((userChoice === 1 && computerChoice === 3) || (userChoice === 2 && computerChoice === 1) || (userChoice === 3 && computerChoice === 2)){
+        return 'You won!';
+    } else {
+        return 'Draw!';
+    }
+}
+console.log(playGame(userChoice));
+
 
 /************************************************************** Task 5 **************************************************************/
 //Metric Converter
 //a. KM to Miles - should take the number of kilometers and convert it to the equal number of miles
+function milesToKM(miles){
+    let km = miles * 1.609344;
+    return km;
+}
 
-
+console.log(milesToKM(3));
 
 
 
 //b. Feet to CM - should take the number of feet and convert it to the equal number of centimeters
   
+function feetToCM(feet){
+    let cm = feet * 30.48;
+    return cm;
+}
 
+console.log(feetToCM(3));
 
 
 
@@ -82,9 +149,23 @@
 // create a function called annoyingSong
 // the function should take a starting number as an argument and count down - at each iteration it should log (number) bottles of soda on the wall, (number) bottles of soda, take one down pass it around (number left over) bottles of soda on the wall`
   
+// function annoyingSong(num){
+//     for(let i = 99; i >= num; i--){
+//         console.log(num + ' bottles of soda on the wall ' + num + " bottles of soda, " + "take one down pass it around " + (num - 1) + " bottles of soda on the wall");
+//     }
+// }
 
 
 
+function annoyingSong(num){
+    for (let i = num; i > 0; i--){
+        let num = i;
+        console.log(num + ' bottles of soda on the wall, ' + (num) + ' bottles of soda, take one down pass it around '+ (num - 1) + ' bottles of soda on the wall');
+    }
+}
+
+
+annoyingSong(99);
 
 /************************************************************** Task 7 **************************************************************/
 //Grade Calculator
@@ -96,8 +177,21 @@
 //and anything below 60 should be F
   
 
+  function letterGrade(grade){
+      if(grade >= 90){
+          return 'A';
+      }else if (grade >= 80){
+          return 'B';
+      }else if (grade >= 70){
+          return 'C';
+      }else if (grade >= 60){
+          return 'D';
+      }else{
+          return 'F';
+      }
+  }
   
-  
+console.log(letterGrade(95));
 
 /************************************************************** Stretch **************************************************************/
 //Create a function that counts the number of vowels within a string. It should handle both capitalized and uncapitalized vowels.
@@ -111,8 +205,3 @@
 /************************************************************** Stretch **************************************************************/
 //Take Rock, Paper, Sissors further
 //update your rock papers sissors code below to take a prompt from a user using the window object
-
-
-
-
-
