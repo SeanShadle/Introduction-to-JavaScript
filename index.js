@@ -98,14 +98,16 @@ console.log(dogFeeder(15, 1));
 // Your function should take a string (either rock paper or scissors)
 // it should return you won or you lost based on the rules of the game (you may need to look up the rules if you have not played before)
 // use math.random to determine the computers choice 
-// hint while you can complete this with only conditionals based on strings it may help to equate choice to a number. 1 beats 3, 2 beats 1, 3 beats 2
+// hint while you can complete this with only conditionals based on strings it may help to equate choice to a number.
+
+
 let userChoice = "paper";
 
 function playGame(userChoice){
     let computerChoice = Math.floor(Math.random() * 3 + 1);
-    if(userChoice === "rock"){
+    if(userChoice == "rock"){
         userChoice = 1;
-    } else if(userChoice === "paper"){
+    } else if(userChoice == "paper"){
         userChoice = 2;
     } else {
         userChoice = 3;
@@ -198,10 +200,43 @@ console.log(letterGrade(95));
 // Hint - you may need to study tomorrow's traning kit on arrays 
 // try looking up the .includes() method
 
+function vowels(str){
+    const vowelList = 'AEIOUaeiou';
+    let numVowels = 0;
+
+    for (let i=0; i < str.length; i++){
+        if (vowelList.indexOf(str[i]) !== -1){
+            numVowels = numVowels + 1;
+        }
+    }
+    return numVowels;
+}
 
 
+console.log(vowels("Get Schwifty"));
 
 
 /************************************************************** Stretch **************************************************************/
 //Take Rock, Paper, Sissors further
-//update your rock papers sissors code below to take a prompt from a user using the window object
+//update your rock papers scissors code below to take a prompt from a user using the window object
+let userChoice2 = prompt('Enter rock, paper or scissors');
+
+
+function playGame2(userChoice2){
+    let computerChoice = Math.floor(Math.random() * 3 + 1);
+    if(userChoice == "rock"){
+        userChoice = 1;
+    } else if(userChoice == "paper"){
+        userChoice = 2;
+    } else {
+        userChoice = 3;
+    }
+    if((computerChoice === 1 && userChoice === 3) || (computerChoice === 2 && userChoice === 1) || (computerChoice === 3 && userChoice === 2)){
+        return alert('You lost!');
+    } else if((userChoice === 1 && computerChoice === 3) || (userChoice === 2 && computerChoice === 1) || (userChoice === 3 && computerChoice === 2)){
+        return alert('You won!');
+    } else {
+        return alert('Draw!');
+    }
+}
+console.log(playGame2());
